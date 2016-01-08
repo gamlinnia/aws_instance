@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>324242</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js">
+    </script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+    <script type="text/javascript" src="Controller/app.js"></script>
+    <script type="text/javascript" src="Controller/IndexController.js"></script>
+    <script type="text/javascript" src="Service/indexService.js"></script>
+
+
+</head>
+<body data-ng-controller="indexController">
+
+<style>
+    table {
+        margin: 0 auto;
+        border-spacing: 0;
+    }
+    th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>instance id</th>
+        <th>ACTION</th>
+        <th>ACTION</th>
+    </tr>
+    <tr ng-repeat="group in groups">
+        <td>{{$index +1}}</td>
+        <td>
+           <div ng-repeat="inst in group">{{inst.instance_id}}</div>
+        </td>
+        <td>
+            <input type="button" value="START" data-ng-click="groupStartInstance(group)" />
+        </td>
+        <td>
+            <input type="button" value="STOP" data-ng-click="groupStopInstance(group)" />
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>INSTANCE NAME</th>
+        <th>INSTANCE ID</th>
+        <th>STATUS</th>
+        <th>START</th>
+        <th>STOP</th>
+    </tr>
+    <tr ng-repeat="instance in instances">
+        <td>{{instance.instName}}</td>
+        <td>{{instance.instance_id}}</td>
+        <td>{{instance.status}}</td>
+        <td>
+            <input type="button" value="START" data-ng-click="startInstance(instance)" />
+        </td>
+        <td>
+            <input type="button" value="STOP" data-ng-click="stopInstance(instance)" />
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>
